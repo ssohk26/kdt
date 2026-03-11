@@ -1,5 +1,3 @@
-[프로젝트 설명 파일 보기](https://drive.google.com/file/d/1Fw-bbipn3Cj4GeHUeOwkhhn4BQtSPsLS/view?usp=drive_link)
-
 # KDT 음성 처리 프로젝트
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
@@ -8,12 +6,20 @@
 
 이 프로젝트는 음성 활동 감지(VAD), 음성 인식(STT), 텍스트 번역, 텍스트 음성 변환(TTS)을 포함한 음성 처리 파이프라인을 구현합니다.
 
+## 📥 다운로드
+
+| 파일 | 설명 | 링크 |
+|------|------|------|
+| 🖥️ `translator_app.py` | 데스크탑 앱 (tkinter GUI) | [⬇️ 다운로드](./translator_app.py) |
+| 🌐 `web_translator.py` | 웹 앱 (Streamlit) | [⬇️ 다운로드](./web_translator.py) |
+| 📦 `requirement.txt` | 의존성 패키지 목록 | [⬇️ 다운로드](./requirement.txt) |
+
 ## 🎯 기능
 
 - **VAD (Voice Activity Detection)**: 실시간으로 음성 활동을 감지하여 음성 부분만 추출
 - **STT (Speech-to-Text)**: 한국어 음성을 텍스트로 변환
-- **번역 (Translation)**: 한국어 텍스트를 영어로 번역
-- **TTS (Text-to-Speech)**: 영어 텍스트를 음성으로 변환하여 출력
+- **번역 (Translation)**: 한국어 텍스트를 영어 / 프랑스어 / 일본어로 번역
+- **TTS (Text-to-Speech)**: 번역된 텍스트를 음성으로 변환하여 자동 출력
 
 ## 📊 워크플로우
 
@@ -23,13 +29,28 @@ graph TD;
     B --> C[음성 추출];
     C --> D[STT: 음성 → 텍스트];
     D --> E[한국어 텍스트];
-    E --> F[번역: 한국어 → 영어];
-    F --> G[영어 텍스트];
+    E --> F[번역: 한국어 → 영어/프랑스어/일본어];
+    F --> G[번역된 텍스트];
     G --> H[TTS: 텍스트 → 음성];
     H --> I[음성 출력];
 ```
 
 ## 📁 파일 설명
+
+### translator_app.py
+> **🖥️ 통합 데스크탑 앱 (GUI)**
+VAD → STT → 번역 → TTS 전체 파이프라인을 GUI로 구현한 통합 앱입니다.
+- tkinter 기반 다크모드 UI
+- 영어 / 프랑스어 / 일본어 번역 지원
+- 녹음 시간 슬라이더 (5~30초)
+- 번역 음성 자동 재생
+
+### web_translator.py
+> **🌐 웹 버전 앱 (Streamlit)**
+브라우저에서 실행 가능한 웹 버전입니다.
+- Streamlit 기반 웹 UI
+- 영어 / 프랑스어 / 일본어 번역 지원
+- 브라우저에서 번역 음성 자동 재생
 
 ### stt.py
 > **🔊 실시간 음성 녹음 및 처리 모듈**
@@ -77,6 +98,18 @@ pip install -r requirement.txt
 
 ## 📖 사용 방법
 
+### 🖥️ 데스크탑 앱 실행
+```bash
+python translator_app.py
+```
+
+### 🌐 웹 앱 실행
+```bash
+pip install streamlit
+streamlit run web_translator.py
+```
+브라우저에서 `http://localhost:8501` 접속!
+
 ### 개별 모듈 실행
 
 1. **VAD 실행**:
@@ -103,11 +136,13 @@ pip install -r requirement.txt
 ## 📚 의존성
 
 - torch
+- torchaudio
 - sounddevice
 - numpy
 - soundfile
 - speech_recognition
 - gtts
-- pydub
+- pygame
 - deep_translator
+- streamlit
 - IPython (선택적)
