@@ -18,8 +18,6 @@ with sr.AudioFile(audio_file) as source:
 text = recognizer.recognize_google(audio_data, language='ko-KR')
 print("변환된 텍스트: ", text)
 
-
-
 translator = Translator(to_lang='ja', from_lang='ko')
 
 # 번역 실행
