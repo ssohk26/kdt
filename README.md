@@ -1,3 +1,5 @@
+[프로젝트 설명 파일 보기](https://drive.google.com/file/d/1Fw-bbipn3Cj4GeHUeOwkhhn4BQtSPsLS/view?usp=drive_link)
+
 # KDT 음성 처리 프로젝트
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
