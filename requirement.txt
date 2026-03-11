@@ -1,0 +1,6 @@
+silero-vad
+sounddevice
+soundfile
+torch
+torchaudio
+SpeechRecognition
