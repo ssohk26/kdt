@@ -102,9 +102,6 @@ import soundfile as sf
 import numpy as np
 import io
 from pydub import AudioSegment
-
-
-
 from deep_translator import GoogleTranslator
 
 # 번역
